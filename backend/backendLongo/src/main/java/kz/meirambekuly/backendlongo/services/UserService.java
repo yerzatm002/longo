@@ -13,5 +13,6 @@ public interface UserService {
     ResultDto<?> login(UserLoginDto dto);
     ResultDto<?> getUserInfo();
     ResultDto<?> updateUser(UserDetailsDto dto);
+    ResultDto<?> activateUser(String phoneNumber, String code);
 
 }
