@@ -75,7 +75,7 @@ public class UserServiceImpl implements UserService {
             String partString = fullString.substring(6);
             partString = partString.replaceFirst("", "");
 //        String fulString= response.body.substring(response.body.indexOf("CODE"));
-            return AsyncResult.forValue(partString);
+            return AsyncResult.forValue(partString.trim());
         }catch (Exception e){
             System.out.println("Ocurred eerrroorr " + e);
         }
@@ -128,7 +128,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public ResultDto<?> login(UserLoginDto dto) {
         Optional<User> user = userRepository.findOne(UserSpecifications
-                .findByPhoneNumberAndPassword(dto.getPhoneNumber(), dto.getPassword()));
+                .findByPhoneNumberAndPassword(dto.getPhoneNumber(), PasswordEncoder.hashcode(dto.getPassword())));
         Optional<SmsVerification> verification = smsVerificationRepository.findOne(SmsVerfSpecifications
                 .findVerificationByPhoneNumber(dto.getPhoneNumber()));
         if(verification.isPresent()){
@@ -192,12 +192,12 @@ public class UserServiceImpl implements UserService {
      * Method to activate user using phone number and code
      * As result, if code and phone number are valid isActivated state of user will change to true
      * **/
-    @Transactional
     @Override
+    @Transactional
     public ResultDto<?> activateUser(String phoneNumber, String code) {
         Optional<SmsVerification> verification = smsVerificationRepository
                 .findOne(SmsVerfSpecifications.findVerificationByPhoneNumberAndCode(phoneNumber, code));
-        if (verification.isPresent()) {
+        if (verification.isPresent()){
             smsVerificationRepository.deleteById(verification.get().getId());
             Optional<User> user = userRepository.findByPhoneNumber(phoneNumber);
             if(user.isPresent()){
@@ -209,12 +209,54 @@ public class UserServiceImpl implements UserService {
                     .isSuccess(true)
                     .HttpStatus(HttpStatus.OK.value())
                     .build();
-        }
+            }
         log.debug("User: {} entered not valid activation code: {}", phoneNumber, code);
         return ResultDto.builder()
                 .isSuccess(false)
                 .HttpStatus(403)
                 .errorMessage("Not valid code")
+                .build();
+
+    }
+
+    /**
+     * Method to change password
+     * **/
+    @Transactional
+    @Override
+    public ResultDto<?> changePassword(String oldPassword, String newPassword) {
+        Optional<User> user = userRepository.findOne(UserSpecifications
+                .findByPhoneNumber(SecurityUtils.getCurrentUserLogin()));
+        if(user.isPresent()){
+            if(PasswordEncoder.hashcode(oldPassword).equals(user.get().getPassword())){
+                if(!PasswordEncoder.hashcode(newPassword).equals(user.get().getPassword())){
+                    user.get().setPassword(PasswordEncoder.hashcode(newPassword));
+                    log.debug("User: {} have changed password successfully", user.get().getPhoneNumber());
+                    return ResultDto.builder()
+                            .isSuccess(true)
+                            .HttpStatus(HttpStatus.OK.value())
+                            .data(user.get().getId())
+                            .build();
+                }
+                log.debug("User: {} entered new password same as the old one", user.get().getPhoneNumber());
+                return ResultDto.builder()
+                        .isSuccess(false)
+                        .HttpStatus(HttpStatus.NO_CONTENT.value())
+                        .errorMessage("Old password equals the new password")
+                        .build();
+            }
+            log.debug("User: {} entered incorrect old password", user.get().getPhoneNumber());
+            return ResultDto.builder()
+                    .isSuccess(false)
+                    .HttpStatus(HttpStatus.BAD_REQUEST.value())
+                    .errorMessage(ErrorMessages.incorrectPassword())
+                    .build();
+        }
+        log.debug("UNAUTHORIZED User tries to get access");
+        return ResultDto.builder()
+                .isSuccess(false)
+                .HttpStatus(HttpStatus.UNAUTHORIZED.value())
+                .errorMessage("UNAUTHORIZED!")
                 .build();
     }
 }

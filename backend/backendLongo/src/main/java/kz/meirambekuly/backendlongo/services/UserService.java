@@ -14,5 +14,6 @@ public interface UserService {
     ResultDto<?> getUserInfo();
     ResultDto<?> updateUser(UserDetailsDto dto);
     ResultDto<?> activateUser(String phoneNumber, String code);
+    ResultDto<?> changePassword(String oldPassword, String newPassword);
 
 }
