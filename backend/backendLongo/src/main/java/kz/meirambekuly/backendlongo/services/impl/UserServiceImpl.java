@@ -6,9 +6,12 @@ import kz.meirambekuly.backendlongo.entity.Role;
 import kz.meirambekuly.backendlongo.specifications.SmsVerfSpecifications;
 import kz.meirambekuly.backendlongo.specifications.UserSpecifications;
 import kz.meirambekuly.backendlongo.utilities.Constants;
+import kz.meirambekuly.backendlongo.utilities.ObjectMapper;
+import kz.meirambekuly.backendlongo.utilities.SecurityUtils;
 import kz.meirambekuly.backendlongo.web.dto.ResultDto;
 import kz.meirambekuly.backendlongo.web.dto.userDtos.UserCreatorDto;
 import kz.meirambekuly.backendlongo.web.dto.userDtos.UserDetailsDto;
+import kz.meirambekuly.backendlongo.web.dto.userDtos.UserDto;
 import kz.meirambekuly.backendlongo.web.dto.userDtos.UserLoginDto;
 import kz.meirambekuly.backendlongo.entity.SmsVerification;
 import kz.meirambekuly.backendlongo.entity.User;
@@ -28,8 +31,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
-import org.w3c.dom.ls.LSInput;
 
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
@@ -153,13 +156,65 @@ public class UserServiceImpl implements UserService {
                 .build();
     }
 
+    /**
+     * Getting currently logged-in user information by security utils
+     *
+     * @return UserDto details of the user
+     * **/
     @Override
     public ResultDto<?> getUserInfo() {
-        return null;
+        Optional<User> user = userRepository.findByPhoneNumber(SecurityUtils.getCurrentUserLogin());
+        if(user.isPresent()){
+            UserDto dto = ObjectMapper.convertToUserDto(user.get());
+            log.debug("User: {} details is responded to the frontend", dto.getPhoneNumber());
+            return ResultDto.builder()
+                    .isSuccess(true)
+                    .HttpStatus(HttpStatus.OK.value())
+                    .data(dto)
+                    .build();
+        }
+        log.debug("Currently user is not logged in!");
+        return ResultDto.builder()
+                .isSuccess(false)
+                .HttpStatus(HttpStatus.FORBIDDEN.value())
+                .errorMessage(ErrorMessages.NO_DATA_FOUND)
+                .build();
     }
+
+
 
     @Override
     public ResultDto<?> updateUser(UserDetailsDto dto) {
         return null;
+    }
+
+    /**
+     * Method to activate user using phone number and code
+     * As result, if code and phone number are valid isActivated state of user will change to true
+     * **/
+    @Transactional
+    @Override
+    public ResultDto<?> activateUser(String phoneNumber, String code) {
+        Optional<SmsVerification> verification = smsVerificationRepository
+                .findOne(SmsVerfSpecifications.findVerificationByPhoneNumberAndCode(phoneNumber, code));
+        if (verification.isPresent()) {
+            smsVerificationRepository.deleteById(verification.get().getId());
+            Optional<User> user = userRepository.findByPhoneNumber(phoneNumber);
+            if(user.isPresent()){
+                user.get().setIsActivated(true);
+                userRepository.save(user.get());
+            }
+            log.debug("User: {} has successfully activated", phoneNumber);
+            return ResultDto.builder()
+                    .isSuccess(true)
+                    .HttpStatus(HttpStatus.OK.value())
+                    .build();
+        }
+        log.debug("User: {} entered not valid activation code: {}", phoneNumber, code);
+        return ResultDto.builder()
+                .isSuccess(false)
+                .HttpStatus(403)
+                .errorMessage("Not valid code")
+                .build();
     }
 }
