@@ -16,7 +16,7 @@ public class UserSpecifications {
      * **/
     public static Specification<User> findByPhoneNumberAndPassword(String phoneNumber, String password){
         return ((root, criteriaQuery, criteriaBuilder) -> {
-            criteriaQuery.where(criteriaBuilder.and(criteriaBuilder.equal(root.get("phone_number"), phoneNumber),
+            criteriaQuery.where(criteriaBuilder.and(criteriaBuilder.equal(root.get("phoneNumber"), phoneNumber),
                     criteriaBuilder.equal(root.get("password"), password)));
             return null;
         });
@@ -26,7 +26,7 @@ public class UserSpecifications {
      * Find user from the db using phone number
      * **/
     public static Specification<User> findByPhoneNumber(String phoneNumber){
-        return ((root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get("phone_number"), phoneNumber));
+        return ((root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get("phoneNumber"), phoneNumber));
     }
 
 }
