@@ -9,3 +9,14 @@ spring:
     properties:
       hibernate:
         format_sql: true
+
+website:
+  urls: https://kaspi.kz/shop/nur-sultan/c/smartphones/?q=:category:Smartphones,
+        https://kaspi.kz/shop/nur-sultan/c/notebooks/,https://kaspi.kz/shop/nur-sultan/c/tvs/class-smart/,
+        https://kaspi.kz/shop/nur-sultan/c/smart%20speakers/,
+        https://kaspi.kz/shop/nur-sultan/c/photo%20cameras/,
+        https://market.yandex.kz/catalog--smartfony/61808/list?hid=91491&allowCollapsing=1&local-offers-first=0,
+        https://market.yandex.kz/catalog--audiotekhnika/17347183/list?hid=90543&allowCollapsing=1&local-offers-first=0&onstock=1,
+        https://market.yandex.kz/catalog--televizory/67957/list?hid=90639&allowCollapsing=1&local-offers-first=0&onstock=1,
+        https://market.yandex.kz/catalog--fotoapparaty/61816/list?hid=91148&allowCollapsing=1&local-offers-first=0&onstock=1,
+        https://market.yandex.kz/catalog--noutbuki/67959/list?hid=91013&allowCollapsing=1&local-offers-first=0&onstock=1

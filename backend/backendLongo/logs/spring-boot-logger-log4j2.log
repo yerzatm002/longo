@@ -1,23 +1,23 @@
-2022-11-26 00:47:10,495 INFO o.s.b.StartupInfoLogger [restartedMain] Starting BackendLongoApplication using Java 11.0.13 on Yeraqa with PID 13280 (C:\Users\user\Desktop\longo\backend\backendLongo\target\classes started by Yerzat in C:\Users\user\Desktop\longo\backend\backendLongo)
-2022-11-26 00:47:10,500 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v2.7.6, Spring v5.3.24
-2022-11-26 00:47:10,501 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
-2022-11-26 00:47:10,538 INFO o.s.b.l.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-11-26 00:47:10,538 INFO o.s.b.l.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-11-26 00:47:11,246 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2022-11-26 00:47:11,299 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 46 ms. Found 3 JPA repository interfaces.
-2022-11-26 00:47:11,848 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
-2022-11-26 00:47:11,938 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1399 ms
-2022-11-26 00:47:12,465 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-11-26 00:47:12,505 INFO o.h.Version [restartedMain] HHH000412: Hibernate ORM core version 5.6.14.Final
-2022-11-26 00:47:12,614 INFO o.h.a.c.r.j.JavaReflectionManager [restartedMain] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2022-11-26 00:47:12,703 INFO o.h.d.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
-2022-11-26 00:47:13,185 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-11-26 00:47:13,192 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-11-26 00:47:13,220 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-11-26 00:47:13,832 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
-2022-11-26 00:47:13,938 INFO o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5647e42a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1dec1532, org.springframework.security.web.context.SecurityContextPersistenceFilter@795327a1, org.springframework.security.web.header.HeaderWriterFilter@66528e76, org.springframework.web.filter.CorsFilter@b7f5894, org.springframework.security.web.authentication.logout.LogoutFilter@a254c23, kz.meirambekuly.backendlongo.config.jwt.JwtAuthorizationFilter@30d2f530, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2bffeded, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@13b21b46, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@59dd21b4, org.springframework.security.web.session.SessionManagementFilter@5fc01bcf, org.springframework.security.web.access.ExceptionTranslationFilter@3d9d18b3, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@29bda3e8]
-2022-11-26 00:47:14,107 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
-2022-11-26 00:47:14,243 INFO o.s.b.StartupInfoLogger [restartedMain] Started BackendLongoApplication in 4.156 seconds (JVM running for 5.305)
-2022-11-26 00:47:50,674 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
-2022-11-26 00:47:50,678 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 2 ms
-2022-11-26 01:00:52,349 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-11-26 14:51:55,513 INFO o.s.b.StartupInfoLogger [restartedMain] Starting BackendLongoApplication using Java 11.0.13 on Yeraqa with PID 4208 (C:\Users\user\Desktop\longo\backend\backendLongo\target\classes started by Yerzat in C:\Users\user\Desktop\longo\backend\backendLongo)
+2022-11-26 14:51:55,518 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v2.7.6, Spring v5.3.24
+2022-11-26 14:51:55,519 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2022-11-26 14:51:55,554 INFO o.s.b.l.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-11-26 14:51:55,554 INFO o.s.b.l.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-11-26 14:51:56,281 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-11-26 14:51:56,337 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 49 ms. Found 3 JPA repository interfaces.
+2022-11-26 14:51:56,899 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2022-11-26 14:51:56,997 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1441 ms
+2022-11-26 14:51:57,496 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-11-26 14:51:57,560 INFO o.h.Version [restartedMain] HHH000412: Hibernate ORM core version 5.6.14.Final
+2022-11-26 14:51:57,693 INFO o.h.a.c.r.j.JavaReflectionManager [restartedMain] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-11-26 14:51:57,789 INFO o.h.d.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-11-26 14:51:58,297 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-11-26 14:51:58,304 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-11-26 14:51:58,350 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-11-26 14:51:58,919 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-11-26 14:51:59,026 INFO o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7d3cf658, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4dcb6136, org.springframework.security.web.context.SecurityContextPersistenceFilter@58323158, org.springframework.security.web.header.HeaderWriterFilter@11204ab1, org.springframework.web.filter.CorsFilter@843bf42, org.springframework.security.web.authentication.logout.LogoutFilter@4b07317a, kz.meirambekuly.backendlongo.config.jwt.JwtAuthorizationFilter@6e53793c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2f3696c5, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@63b2b881, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7447cc98, org.springframework.security.web.session.SessionManagementFilter@35a20251, org.springframework.security.web.access.ExceptionTranslationFilter@9bb5b15, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@11e9d29d]
+2022-11-26 14:51:59,183 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2022-11-26 14:51:59,321 INFO o.s.b.StartupInfoLogger [restartedMain] Started BackendLongoApplication in 4.258 seconds (JVM running for 5.417)
+2022-11-26 14:52:54,828 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2022-11-26 14:52:54,829 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 1 ms
+2022-11-26 14:56:19,381 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
