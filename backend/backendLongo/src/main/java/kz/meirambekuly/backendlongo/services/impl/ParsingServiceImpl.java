@@ -36,8 +36,10 @@ public class ParsingServiceImpl implements ParsingService {
         Set<ProductDto> products = new HashSet<>();
         for (String url : urls){
             if(url.contains(type) && url.contains("kaspi")){
+                log.debug("Parsing {} products from Kaspi Shop {}", type, url);
                 extractDataFromKaspi(products, url, type);
             }else if (url.contains(type) && url.contains("yandex")){
+                log.debug("Parsing {} products from Yandex Market {}", type, url);
                 extractDataFromYandex(products, url, type);
             }
         }
@@ -77,6 +79,7 @@ public class ParsingServiceImpl implements ParsingService {
                     products.add(productDto);
             }
         } catch (IOException e) {
+            log.error("Error {} during parsing data from Kaspi Shop {}", e.getMessage(), url);
             e.printStackTrace();
         }
     }
@@ -106,6 +109,7 @@ public class ParsingServiceImpl implements ParsingService {
                 }
             }
         } catch (IOException e) {
+            log.error("Error {} during parsing data from Yandex Market {}", e.getMessage(), url);
             e.printStackTrace();
         }
     }
